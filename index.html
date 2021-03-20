@@ -1,0 +1,35 @@
+<!--
+Copyright (C) 2021 BITJUNGLE Rune Mathisen
+This code is licensed under a GPLv3 license 
+See http://www.gnu.org/licenses/gpl-3.0.html 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="BITJUNGLE Rune Mathisen">
+    <title>Database live search with Javascript fetch() and a PHP backend</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="w3-container">
+        <h1>Database live search with Javascript fetch() and a PHP backend</h1>
+        <div class="w3-container">This is a demo of how to use the Javascript 
+            fetch() method for querying a PHP backend that communicates with a 
+            MySQL server. Complete source code and example data is 
+            <a href="https://github.com/bitjungle/db-php-js-fetch">available here</a>.
+        </div>
+        <hr>
+        <form class="w3-container">
+            <input type="text" name="searchtext" id="searchtext" 
+                   placeholder="Type query here..." class="w3-input"
+                   oninput="search(this.value)">
+        </form>
+        <ul id="dataViewer" class="w3-container w3-ul w3-deep-orange w3-margin-left w3-margin-right">
+        </ul>
+    </main>
+</body>
+</html>
