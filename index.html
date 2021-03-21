@@ -23,12 +23,13 @@ See http://www.gnu.org/licenses/gpl-3.0.html
             <a href="https://github.com/bitjungle/db-php-js-fetch">available here</a>.
         </div>
         <hr>
-        <form class="w3-container">
+        <form class="w3-container" method="POST">
             <input type="text" name="searchtext" id="searchtext" 
                    placeholder="Type query here..." class="w3-input"
-                   oninput="search(this.value)">
+                   oninput="search(this.value)" autofocus>
         </form>
         <ul id="dataViewer" class="w3-container w3-ul w3-deep-orange w3-margin-left w3-margin-right">
+            <!-- Hit list inserted from Javascript -->
         </ul>
     </main>
 </body>
