@@ -17,7 +17,6 @@ function init() {
     getDbInfo().then((settings) => {
         db = settings;
     });
-    console.log(db);
 }
 
 /**
@@ -74,7 +73,7 @@ async function fetchSearchData(str) {
  * @param {array} data Response from the database
  */
 function viewSearchResult(data) {
-    console.log(`viewSearchResult(...)`);
+    console.log(`viewSearchResult(...[${data.length}])`);
     const dataViewer = document.getElementById('dataViewer');
     dataViewer.innerHTML = '';
     if (data.length > 0) {
