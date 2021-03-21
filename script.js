@@ -27,8 +27,8 @@ function init() {
 async function getDbInfo() {
     console.log('getDbInfo()');
     const response = await fetch('dbinfo.php');
-    if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
+    if (response.status != 200) {
+        const message = `Error status code: ${response.status}`;
         throw new Error(message);
     }
     const settings = await response.json();
@@ -59,8 +59,8 @@ async function fetchSearchData(str) {
         method: 'POST',
         body: new URLSearchParams('str=' + str)
     });
-    if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
+    if (response.status != 200) {
+        const message = `Error status code: ${response.status}`;
         throw new Error(message);
     }
     const searchData = await response.json();
