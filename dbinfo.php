@@ -11,6 +11,8 @@ try {
     $db = new DB();
     echo json_encode($db->getDbInfo());
 } catch (exception $e) {
+    http_response_code(503); // Service Unavailable
     echo '{}';
+    exit($e->getMessage());
 }
 ?>

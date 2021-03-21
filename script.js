@@ -75,7 +75,6 @@ async function fetchSearchData(str) {
  */
 function viewSearchResult(data) {
     console.log(`viewSearchResult(...)`);
-    console.log(db);
     const dataViewer = document.getElementById('dataViewer');
     dataViewer.innerHTML = '';
     if (data.length > 0) {
