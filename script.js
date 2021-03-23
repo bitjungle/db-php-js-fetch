@@ -89,3 +89,5 @@ function viewSearchResult(data) {
 }
 
 window.addEventListener('load', init);
+const searchText = document.getElementById('searchtext');
+searchText.addEventListener('input', () => search(searchText.value));
