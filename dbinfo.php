@@ -6,7 +6,7 @@
  * This code is licensed under a GPLv3 license 
  * See http://www.gnu.org/licenses/gpl-3.0.html 
  */
-require_once('DB.php');
+require_once 'DB.php';
 try {
     $db = new DB();
     echo json_encode($db->getDbInfo());
