@@ -16,7 +16,7 @@ class DB extends PDO {
      * 
      * @param string $file INI file name.
      */
-    public function __construct($file = 'settings.ini') {
+    public function __construct($file = '/path/to/settings.ini') {
         $this->_ini = parse_ini_file($file, true);
 
         $dsn = $this->_ini['db']['driver'] . 
