@@ -6,33 +6,12 @@
  * See http://www.gnu.org/licenses/gpl-3.0.html 
  */
 
-let db; // Global variable containing database properties
-
 /**
  * Initialisation of the app, runs once at window load
  * 
  */
 function init() {
     console.log('init()');
-    getDbInfo().then((settings) => {
-        db = settings;
-    });
-}
-
-/**
- * Get database properties
- * 
- * @returns {array} Database table properties
- */
-async function getDbInfo() {
-    console.log('getDbInfo()');
-    const response = await fetch('dbinfo.php');
-    if (response.status != 200) {
-        const message = `Error status code: ${response.status}`;
-        throw new Error(message);
-    }
-    const settings = await response.json();
-    return settings;
 }
 
 /**
@@ -60,8 +39,7 @@ async function fetchSearchData(str) {
         body: new URLSearchParams('str=' + str)
     });
     if (response.status != 200) {
-        const message = `Error status code: ${response.status}`;
-        throw new Error(message);
+        throw new Error(response.status);
     }
     const searchData = await response.json();
     return searchData;
@@ -80,8 +58,8 @@ function viewSearchResult(data) {
         data.forEach(element => {
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.setAttribute('href', element[db.urlfield]);
-            a.textContent = `${element[db.descfield]} (${element[db.idxfield]})`;
+            a.setAttribute('href', element['urldata']);
+            a.textContent = `${element['fagnavn']} (${element['kode']})`;
             li.appendChild(a);
             dataViewer.appendChild(li);
         });
