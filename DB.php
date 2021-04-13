@@ -18,9 +18,11 @@
  * This code is licensed under a GPLv3 license 
  * See http://www.gnu.org/licenses/gpl-3.0.html 
  *
- * @author BITJUNGLE Rune Mathisen <devel@bitjungle.com>
+ * @author  BITJUNGLE Rune Mathisen <devel@bitjungle.com>
+ * @license https://www.gnu.org/licenses/gpl-3.0.html GNU GPLv3
  */
-class DB extends PDO {
+class DB extends PDO 
+{
     private $_ini;
 
     /**
@@ -28,14 +30,19 @@ class DB extends PDO {
      * 
      * @param string $file INI file name.
      */
-    public function __construct($file = '/path/to/settings.ini') {
+    public function __construct($file = '/path/to/settings.ini') 
+    {
         $this->_ini = parse_ini_file($file, true);
 
         $dsn = $this->_ini['db']['driver'] . 
         ':dbname=' . $this->_ini['db']['dbname'] .
         ';host=' . $this->_ini['db']['host'];
         
-        parent::__construct($dsn, $this->_ini['db']['user'], $this->_ini['db']['passwd']);
+        parent::__construct(
+            $dsn, 
+            $this->_ini['db']['user'], 
+            $this->_ini['db']['passwd']
+        );
     }
 
     /**
@@ -43,24 +50,27 @@ class DB extends PDO {
      * 
      * @return array|false
      */
-    public function getAllData() {
-        $query = "SELECT * FROM Fagkoder ORDER BY fagnavn ASC;";
+    public function getAllData() 
+    {
+        $query = 'SELECT * FROM Fagkoder ORDER BY fagnavn ASC;';
         $stmt = $this->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
-     * Search the database table descfield and idxfield
+     * Search the database for a specific string
      * 
      * @param string $str The search string
+     * 
      * @return array|false
      */
-    public function searchData($str) {
-        $query = "SELECT kode, fagnavn, urldata FROM Fagkoder  "
-               . "WHERE fagnavn LIKE :search_string  "
-               . "OR kode LIKE :search_string  "
-               . "ORDER BY fagnavn ASC;";
+    public function searchData($str) 
+    {
+        $query = 'SELECT kode, fagnavn, urldata FROM Fagkoder 
+                  WHERE fagnavn LIKE :search_string  
+                  OR kode LIKE :search_string  
+                  ORDER BY fagnavn ASC;';
         $stmt = $this->prepare($query);
         $stmt->execute(['search_string' => "%{$str}%"]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
