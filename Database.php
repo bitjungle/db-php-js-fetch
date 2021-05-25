@@ -21,7 +21,7 @@
  * @author  BITJUNGLE Rune Mathisen <devel@bitjungle.com>
  * @license https://www.gnu.org/licenses/gpl-3.0.html GNU GPLv3
  */
-class DB extends PDO 
+class Database extends PDO 
 {
     private $_ini;
 

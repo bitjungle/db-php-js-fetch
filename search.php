@@ -6,9 +6,9 @@
  * This code is licensed under a GPLv3 license 
  * See http://www.gnu.org/licenses/gpl-3.0.html 
  */
-require_once 'DB.php';
+require_once 'Database.php';
 try {
-    $db = new DB();
+    $db = new Database();
     if (strlen($_POST['str']) > 0) {
         echo json_encode($db->searchData($_POST['str']));
     } else {
