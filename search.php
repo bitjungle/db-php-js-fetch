@@ -8,9 +8,16 @@
  */
 require_once 'Database.php';
 try {
-    $db = new Database();
+    $db = new Database('/var/www/db-php-js-fetch-settings.ini');
     if (strlen($_POST['str']) > 0) {
         echo json_encode($db->searchData($_POST['str']));
+    } else if (strlen($_GET['str']) > 0) {
+        echo '<!DOCTYPE html>
+              <html>
+              <head><meta charset="UTF-8"><title>search</title></head>
+              <body><data id="response" style="font-family: monospace">';
+        echo json_encode($db->searchData($_GET['str']));
+        echo '</data></body></html>';
     } else {
         echo '{}';
     }
